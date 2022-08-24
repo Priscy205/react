@@ -11,7 +11,7 @@
         <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>   <!--detecta las etiquetas del script-->
     </head>
     <body>
-        <h1>Women in Tech</h1>
+        <h1>Contador</h1>
         <div id="app">
         </div>
 
@@ -59,13 +59,41 @@
               //  name: "User"
             //}
 
+            function Contador(){
+                let contadorState = useState(14);
+                let contadorValue = contadorState [0];
+
+                let actualizarContador = contadorState[1];
+
+                return(
+                    <div>
+                        <span>{contadorValue}</span>
+                        <button
+                        onClick={() =>{
+                            actualizarContador(contadorValue + 1)
+                        }} 
+                        >
+                        Incrementar +
+                        </button>
+                        <button
+                        onClick={() =>{
+                            actualizarContador(contadorValue - 1)
+                        }} 
+                        >
+                        Decrementar -
+                        </button>
+                    </div>  
+                ) ;
+            }
+
             ReactDOM.render(
             <div>
-                <Avatar id={21} name='Andrea' size="small"/>
+                <Contador />
+                {/*<Avatar id={21} name='Andrea' size="small"/>
                 <Avatar id={48} name='Daniela'/>
                 <Avatar id={28} name='JSXLady' size="large"/>
                 <Avatar id={20} size="large" />
-                <Avatar name='Susana'/>
+            <Avatar name='Susana'/>*/}
             </div>,
             $app
             );
