@@ -1,12 +1,5 @@
-const $app = document.getElementById("app")
-const h = React.createElement       //Crea un elemento
 
-const Avatar = params => {
-    const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`
-    return h("img", {src})     //diciendole que es lo que queremos renderizar el elemento imagen y le vamos a pasar el atributo src
-};
-
-ReactDOM.render(h(Avatar, { id: 21}), $app);
+    //h("div", null, [h(Avatar, { id: 21}), h(Avatar, { id: 48})]) ,  $app); //renderización de dos elementos
 
 //const Avatar = params => {
     //const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;

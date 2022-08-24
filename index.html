@@ -6,13 +6,36 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Template</title>
         <link rel="stylesheet" href="./estilos.css">
-        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+        <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script> <!--librería de react-->
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script> <!--Tiene el código que hace que funcione el React en el navegador-->
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>   <!--detecta las etiquetas del script-->
     </head>
     <body>
         <h1>Women in Tech</h1>
         <div id="app">
         </div>
-        <script src="avatars.js"></script>
+        <script type="text/babel">
+            const $app = document.getElementById("app");
+            const h = React.createElement;       //Crea un elemento
+
+            const Avatar = params => {
+                const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
+                //return h("img", {src})     //diciendole que es lo que queremos renderizar el elemento imagen y le vamos a pasar el atributo src
+                return (
+                <picture>
+                    <img src={src} />
+                    <strong>{params.name}</strong>
+                </picture>
+                );
+            };
+
+            ReactDOM.render(
+            <div>
+                <Avatar id={21} name='Andrea' />
+                <Avatar id={48} name='Daniela'/>
+            </div>,
+            $app
+            );
+        </script>
     </body>
 </html>
