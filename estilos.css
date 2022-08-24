@@ -12,7 +12,6 @@ picture.is-large{
     width: 200px;
 }
 
-
 picture{
     display: flex;
     flex-direction: column;
@@ -22,4 +21,17 @@ picture{
 
 img.disabled {
     opacity: 0.3;
+}
+
+i{
+    align-content: center;
+        align-items: center;
+        border: 1px solid #ccc;
+        border-radius: 20%;
+        display: flex;
+        justify-content: center;
+        min-height: 50px;
+        display: block;
+        width: 100%;
+        text-align: center;
 }

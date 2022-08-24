@@ -21,41 +21,51 @@
             //const h = React.createElement;       //Crea un elemento
             const useState = React.useState
 
-            const Avatar = props => {
+            const Avatar = ({ id, name ="Sin nombre", size }) => {
                 const [enabled, setEnabled] = useState(true);
-
-                const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
+                const src = `https://randomuser.me/api/portraits/women/${id}.jpg`;
                 //return h("img", {src})     //diciendole que es lo que queremos renderizar el elemento imagen y le vamos a pasar el atributo src
 
-                let pictureClassName = ''   //Creación de coponenetes reutilizables con 3 diferentes tamaños
-                if(props.size === "small"){
-                    pictureClassName = 'is-small'
-                }else if(props.size === "large"){
-                    pictureClassName = 'is-large'
+                let pictureClassName = ""   //Creación de coponenetes reutilizables con 3 diferentes tamaños
+                if(size === "small"){
+                    pictureClassName = "is-small"
+                }else if(size === "large"){
+                    pictureClassName = "is-large"
                 }
 
                 const imgClassName = enabled ? "" : "disabled" ;
 
-
                 return (
                 <picture className={pictureClassName}>
-                    <img 
-                    onClick={() => {
-                        setEnabled(!enabled);
-                        }}
-                    className={imgClassName} 
-                    src={src} 
-                    />
-                    <strong>{props.name}</strong>
+                    {
+                        id ? (      //renderizado condicional
+                           <img 
+                            onClick={() => {
+                                setEnabled(!enabled);
+                                }}
+                            className={imgClassName} 
+                            src={src} 
+                            /> 
+                        ) : (
+                            <i>Sin imagen</i>
+                )}
+                    
+                    <strong>{enabled ? name: "Desactivada"}</strong>
                 </picture>
                 );
             };
+
+            //Avatar.defaultProps = { //una forma de crear pordefault un nombre, no es muy recomendable usarlo
+              //  name: "User"
+            //}
 
             ReactDOM.render(
             <div>
                 <Avatar id={21} name='Andrea' size="small"/>
                 <Avatar id={48} name='Daniela'/>
                 <Avatar id={28} name='JSXLady' size="large"/>
+                <Avatar id={20} size="large" />
+                <Avatar name='Susana'/>
             </div>,
             $app
             );
