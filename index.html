@@ -14,17 +14,27 @@
         <h1>Women in Tech</h1>
         <div id="app">
         </div>
+
+
         <script type="text/babel">
             const $app = document.getElementById("app");
-            const h = React.createElement;       //Crea un elemento
+            //const h = React.createElement;       //Crea un elemento
+            const useState = React.useState
 
-            const Avatar = params => {
-                const src = `https://randomuser.me/api/portraits/women/${params.id}.jpg`;
+            const Avatar = props => {
+                const [enabled, setEnabled] = useState(true)
+
+                const src = `https://randomuser.me/api/portraits/women/${props.id}.jpg`;
                 //return h("img", {src})     //diciendole que es lo que queremos renderizar el elemento imagen y le vamos a pasar el atributo src
+
+                const className = enabled ? "" : "disabled" 
                 return (
                 <picture>
-                    <img src={src} />
-                    <strong>{params.name}</strong>
+                    <img onClick={() => setEnabled(!enabled)}
+                    className={className} 
+                    src={src} 
+                    />
+                    <strong>{props.name}</strong>
                 </picture>
                 );
             };
